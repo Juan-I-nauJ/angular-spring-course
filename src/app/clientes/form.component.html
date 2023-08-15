@@ -1,3 +1,10 @@
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+    <li *ngFor="let err of errores">
+        {{err}}
+    </li>
+</ul>
+
+
 <div class="card bg-dark" text-white>
 <div class="card-header text-white text-center">
     {{titulo}}
@@ -7,7 +14,7 @@
 <div class="form-group row">
 <label for="" class="col-form-label col-sm-2 text-white">Nombre</label>
 <div class="col-sm-6">
-    <input type="text" class="form-control my-3" [(ngModel)]="cliente.nombre" name="nombre" required minlength="4" #nombre="ngModel">
+    <input type="text" class="form-control my-3" [(ngModel)]="cliente.nombre" name="nombre" #nombre="ngModel"> <!--required minlength=4-->
     <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
         <div *ngIf="nombre.errors.required">
             Debes poner un nombre.
@@ -22,7 +29,7 @@
 <div class="form-group row">
     <label for="" class="col-form-label col-sm-2 text-white">Apellido</label>
     <div class="col-sm-6">
-        <input type="text" class="form-control my-3" [(ngModel)]="cliente.apellido" name="apellido" required #apellido="ngModel">
+        <input type="text" class="form-control my-3" [(ngModel)]="cliente.apellido" name="apellido" #apellido="ngModel"> <!--required-->
         <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
             <div *ngIf="apellido.errors.required">
                 Debes poner al menos un apellido.
@@ -34,7 +41,7 @@
     <div class="form-group row">
         <label for="" class="col-form-label col-sm-2 text-white">E-mail</label>
         <div class="col-sm-6">
-            <input type="email" class="form-control my-3" [(ngModel)]="cliente.email" name="email" required email #email="ngModel">
+            <input type="email" class="form-control my-3" [(ngModel)]="cliente.email" name="email" #email="ngModel"> <!--required email-->
             <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
                 <div *ngIf="email.errors.required">
                     Debes poner un email.
